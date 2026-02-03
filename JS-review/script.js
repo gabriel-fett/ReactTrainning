@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(2);
+const book = getBook(1);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -158,6 +158,28 @@ console.log(author, title, genres);
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 
-const [primaryGenre, secondaryGenre] = genres;
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+console.log(primaryGenre, secondaryGenre, otherGenres);
 
-console.log(primaryGenre, secondaryGenre);
+const newGenres = ["epic fantasy", ...genres];
+newGenres;
+
+const updateBook = {
+  ...book,
+  
+  //adicionando uma nova propriedade
+  moviePublicationDate: "2001-12-19",
+// sobrescrevendo uma propriedade existente.
+pages: 1210,
+
+};
+updateBook
+
+const summary = `${title}, tem ${pages}-paginas livro comprido, foi escrito por ${author} e publicado em ${publicationDate.split("-")[0]}. O livro tem ${hasMovieAdaptation ? "" : "não tem"} adaptação para filme`;
+summary;
+
+const pagesRange = pages > 1000 ? "mais que 1000" : "menos que 1000";
+pagesRange;
+console.log(`O livre tem ${pagesRange} pages`)
+
+
