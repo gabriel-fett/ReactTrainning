@@ -166,20 +166,25 @@ newGenres;
 
 const updateBook = {
   ...book,
-  
+
   //adicionando uma nova propriedade
   moviePublicationDate: "2001-12-19",
-// sobrescrevendo uma propriedade existente.
-pages: 1210,
-
+  // sobrescrevendo uma propriedade existente.
+  pages: 1210,
 };
-updateBook
+updateBook;
 
-const summary = `${title}, tem ${pages}-paginas livro comprido, foi escrito por ${author} e publicado em ${publicationDate.split("-")[0]}. O livro tem ${hasMovieAdaptation ? "" : "não tem"} adaptação para filme`;
+//vamos substituir a publicationDate.Split em uma função menor
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title}, tem ${pages}-paginas livro comprido, foi escrito por ${author} e publicado em ${getYear(publicationDate).split("-")[0]}. O livro tem ${hasMovieAdaptation ? "" : "não tem"} adaptação para filme`;
 summary;
 
 const pagesRange = pages > 1000 ? "mais que 1000" : "menos que 1000";
 pagesRange;
-console.log(`O livre tem ${pagesRange} pages`)
-
-
+console.log(`O livre tem ${pagesRange} pages`);
