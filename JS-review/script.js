@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(2);
+const book = getBook(3);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -216,10 +216,19 @@ spanishTranslation;
 
 //aqui temos um problema por conta dos "falsys", o valor retornou 0 em relacao a conta do 'reviewsCount' ele trás 0, e o certo era trazer '0'
 // e tem uma forma de como contornar essa situação, que é com o '??' ele é como se fosse o if e else
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
-//como aqui podemos ver o resultado trazendo 0, ao inves de no data
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// //como aqui podemos ver o resultado trazendo 0, ao inves de no data
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  librarything;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
