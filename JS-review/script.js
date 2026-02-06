@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(1);
+const book = getBook(2);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -188,3 +188,38 @@ summary;
 const pagesRange = pages > 1000 ? "mais que 1000" : "menos que 1000";
 pagesRange;
 console.log(`O livre tem ${pagesRange} pages`);
+
+//vamos ver alguns exemplos de &&
+
+// o 'and' que é o mesmo q && ele sempre le a segunda linha e ignora a primeira, caso a primeira seja verdadeira
+// o  'and' que é o mesmo q && ele sempre le somente a primeira linha, caso ela seja falsa.
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+//falsy: 0, '', null, undefined (sao os valores falsos que são chamados de "falsy")
+//esses valores são definidos como "falsos pelo js, exemplo abaixo:"
+console.log("jonas" && "Some string");
+console.log(0 && "Some string");
+
+//agora vamos ver o 'diferente de'||
+// quando o verdadeiro é na frente ele trás o primeiro
+//quando o falso é na frente ele trás o segundo
+
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.reviewsCount || "NOT TRANSLATED";
+spanishTranslation;
+
+//aqui temos um problema por conta dos "falsys", o valor retornou 0 em relacao a conta do 'reviewsCount' ele trás 0, e o certo era trazer '0'
+// e tem uma forma de como contornar essa situação, que é com o '??' ele é como se fosse o if e else
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+//como aqui podemos ver o resultado trazendo 0, ao inves de no data
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
