@@ -266,6 +266,7 @@ const soma = `A soma é: ${a + b}`;
 // Resultado: "A soma é: 30"
 */
 
+/*
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -300,7 +301,7 @@ adventureBooks;
 const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
 pagesAllBooks;
 
-/*
+
 // ==================== REDUCE ====================
 // O .reduce() "reduz" um array inteiro para UM único valor (soma, média, maior, etc)
 // Sintaxe: array.reduce((acumulador, elemento) => novaOperação, valorInicial)
@@ -333,7 +334,7 @@ const user = { name: "Gabriel", address: { city: "SP" } };
 const city = user?.address?.city; // "SP"
 const phone = user?.phone?.number; // undefined (não dá erro!)
 // Sem o "?." daria erro: "Cannot read property 'number' of undefined"
-*/
+
 
 //sort mutation fuction
 const arr = [3, 7, 1, 9, 6];
@@ -360,3 +361,10 @@ booksAfterDelete;
 //3) Update book object from array
 const booksAfterUpdate = booksAfterDelete.map((book) => book.id === 1 ? { ...book, pages: 1210 } : book);
 booksAfterUpdate;
+*/
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+console.log("jonas");
