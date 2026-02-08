@@ -234,6 +234,38 @@ function getTotalReviewCount(book) {
 console.log(getTotalReviewCount(book));
 */
 
+/*javascript relembrando:
+// ==================== MAP ====================
+// O .map() percorre cada elemento de um array, transforma ele, e retorna um NOVO array.
+// Sintaxe: array.map((elemento) => transformação)
+
+// Exemplo 1: Dobrar números
+const numeros = [1, 2, 3];
+const dobrados = numeros.map((n) => n * 2);
+// Resultado: [2, 4, 6]
+
+// Exemplo 2: Extrair propriedade de objetos
+const pessoas = [{ nome: "Gabriel" }, { nome: "Maria" }];
+const nomes = pessoas.map((pessoa) => pessoa.nome);
+// Resultado: ["Gabriel", "Maria"]
+
+// ==================== TEMPLATE LITERALS (`` e ${}) ====================
+// Crases `` criam strings modernas
+// ${} insere variáveis/código JavaScript dentro da string
+
+// Exemplo 1: Interpolação básica
+const nome = "Gabriel";
+const idade = 25;
+const frase = `Olá, ${nome}! Você tem ${idade} anos`;
+// Resultado: "Olá, Gabriel! Você tem 25 anos"
+
+// Exemplo 2: Com expressões
+const a = 10;
+const b = 20;
+const soma = `A soma é: ${a + b}`;
+// Resultado: "A soma é: 30"
+*/
+
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -256,3 +288,11 @@ const essentialData = books.map((book) => ({
   reviewsCount: getTotalReviewCount(book),
 }));
 essentialData;
+
+const longBooksWithMovie = books.filter(book => book.pages > 500).filter((book) =>  book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
