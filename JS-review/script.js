@@ -289,10 +289,74 @@ const essentialData = books.map((book) => ({
 }));
 essentialData;
 
-const longBooksWithMovie = books.filter(book => book.pages > 500).filter((book) =>  book.hasMovieAdaptation);
+const longBooksWithMovie = books.filter(book => book.pages > 500).filter((book) => book.hasMovieAdaptation);
 longBooksWithMovie;
 
 const adventureBooks = books
   .filter((books) => books.genres.includes("adventure"))
   .map((book) => book.title);
 adventureBooks;
+
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+pagesAllBooks;
+
+/*
+// ==================== REDUCE ====================
+// O .reduce() "reduz" um array inteiro para UM único valor (soma, média, maior, etc)
+// Sintaxe: array.reduce((acumulador, elemento) => novaOperação, valorInicial)
+
+// Exemplo 1: Somar todos os números
+const numeros = [10, 20, 30];
+const soma = numeros.reduce((acc, num) => acc + num, 0);
+// 0 + 10 = 10 → 10 + 20 = 30 → 30 + 30 = 60
+// Resultado: 60
+
+// Exemplo 2: Somar páginas de livros
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+// Percorre cada livro somando as páginas. Resultado: total de páginas
+
+
+// ==================== OPERADOR TERNÁRIO (? :) ====================
+// Atalho para if/else em uma linha
+// Sintaxe: condição ? seVerdadeiro : seFalso
+
+const idade = 18;
+const status = idade >= 18 ? "adulto" : "menor";
+// Se idade >= 18, retorna "adulto", senão retorna "menor"
+
+
+// ==================== OPTIONAL CHAINING (?.) ====================
+// Acessa propriedades sem quebrar o código se algo for null/undefined
+// Sintaxe: objeto?.propriedade?.subPropriedade
+
+const user = { name: "Gabriel", address: { city: "SP" } };
+const city = user?.address?.city; // "SP"
+const phone = user?.phone?.number; // undefined (não dá erro!)
+// Sem o "?." daria erro: "Cannot read property 'number' of undefined"
+*/
+
+//sort mutation fuction
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
+
+//1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+//2) Delete book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+//3) Update book object from array
+const booksAfterUpdate = booksAfterDelete.map((book) => book.id === 1 ? { ...book, pages: 1210 } : book);
+booksAfterUpdate;
