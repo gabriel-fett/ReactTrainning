@@ -78,8 +78,10 @@ function Menu() {
 
       {numPizzas > 0 ? (
         <>
-          <p> Authentic italian cuisine. 6 creative dishes to choose from. All from
-            our stone oven, all organic, all delicious.
+          <p>
+            {" "}
+            Authentic italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
           </p>
           <ul className="pizzas">
             {pizzaData.map((pizza) => (
@@ -111,15 +113,22 @@ function Menu() {
 function Pizza({ pizzaObj }) {
   console.log(pizzaObj);
 
-  if (pizzaObj.soldOut) return null;
+  // if (pizzaObj.soldOut) return null;
 
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT</span>
+        ) : (
+          <span>{pizzaObj.price}</span>
+        )} */}
+
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -152,11 +161,13 @@ function Footer() {
 function Order({ closeHour, openHour }) {
   return (
     <div className="order">
-      <p>We´re open from {openHour}:00 to {closeHour}:00. Come visit us or order online!</p>
+      <p>
+        We´re open from {openHour}:00 to {closeHour}:00. Come visit us or order
+        online!
+      </p>
       <button className="btn">Order</button>
     </div>
-  )
-
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
